@@ -34,14 +34,14 @@ fun MainComponent() {
 	NavHost(navController = navController, startDestination = "welcome") {
 		composable(
 			"welcome",
-			// enterTransition = {},
+			enterTransition = { slideInHorizontally { -it } },
 			exitTransition = { slideOutHorizontally { -it } }
 		) { WelcomePage(navController) }
 		
 		composable(
 			"signup",
 			enterTransition = { slideInHorizontally { it } },
-			// exitTransition = {}
+			exitTransition = { slideOutHorizontally { it } }
 		) { SignupPage() }
 	}
 }

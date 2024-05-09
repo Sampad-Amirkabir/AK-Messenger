@@ -52,6 +52,7 @@ android {
 }
 
 dependencies {
+	implementation(libs.coil)
 	implementation(libs.androidx.material.icons)
 	implementation(libs.androidx.navigation)
 	implementation(libs.androidx.core.ktx)

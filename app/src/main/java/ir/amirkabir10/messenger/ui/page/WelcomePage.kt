@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,7 +42,7 @@ fun WelcomePage(navController: NavController) {
 			verticalArrangement = Arrangement.SpaceBetween
 		) {
 			Text(
-				text = "Welcome to AK-Messenger",
+				text = stringResource(R.string.welcome_message),
 				style = Typography.displayMedium,
 				textAlign = TextAlign.Center
 			)
@@ -57,7 +58,7 @@ fun WelcomePage(navController: NavController) {
 				onClick = { navController.navigate("signup") }
 			) {
 				Text(
-					text = "Next",
+					text = stringResource(R.string.next_btn_text),
 					style = Typography.titleLarge
 				)
 				Spacer(modifier = Modifier.width(8.dp))

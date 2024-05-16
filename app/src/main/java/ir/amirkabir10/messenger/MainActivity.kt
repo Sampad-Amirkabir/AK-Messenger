@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import ir.amirkabir10.messenger.ui.page.ChatPage
 import ir.amirkabir10.messenger.ui.page.SignupPage
 import ir.amirkabir10.messenger.ui.page.WelcomePage
 import ir.amirkabir10.messenger.ui.theme.AKMessengerTheme
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
 fun MainComponent() {
 	val navController = rememberNavController()
 	
-	NavHost(navController = navController, startDestination = "welcome") {
+	NavHost(navController = navController, startDestination = "chat") {
 		composable(
 			"welcome",
 			enterTransition = { slideInHorizontally { -it } },
@@ -42,7 +43,11 @@ fun MainComponent() {
 			"signup",
 			enterTransition = { slideInHorizontally { it } },
 			exitTransition = { slideOutHorizontally { it } }
-		) { SignupPage() }
+		) { SignupPage(navController) }
+		
+		composable(
+			route = "chat"
+		) { ChatPage() }
 	}
 }
 

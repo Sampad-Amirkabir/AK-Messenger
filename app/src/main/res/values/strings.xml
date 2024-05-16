@@ -1,3 +1,5 @@
 <resources>
 	<string name="app_name">AK Messenger</string>
+	<string name="welcome_message">Welcome to AK-Messenger</string>
+	<string name="next_btn_text">Next</string>
 </resources>

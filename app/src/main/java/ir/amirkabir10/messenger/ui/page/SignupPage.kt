@@ -2,7 +2,6 @@ package ir.amirkabir10.messenger.ui.page
 
 import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Environment
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -48,20 +47,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import androidx.core.net.toUri
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
-import ir.amirkabir10.messenger.MainActivity
 import ir.amirkabir10.messenger.ui.theme.AKMessengerTheme
 import ir.amirkabir10.messenger.ui.theme.Typography
-import java.io.File
 
 @Composable
-fun SignupPage() {
+fun SignupPage(navController: NavController) {
 	var dialogShown by remember { mutableStateOf(false) }
 	var username by remember { mutableStateOf("") }
 	var avatar by remember { mutableStateOf(null as Uri?) }
@@ -233,7 +230,10 @@ fun SignupPage() {
 				onClick = {
 					if (username.isBlank()) {
 						nameHasError = true
+						return@Button
 					}
+					
+					navController.navigate("chat")
 				}
 			) {
 				Text(text = "Start", style = Typography.titleLarge)
@@ -248,7 +248,7 @@ fun SignupPage() {
 @Composable
 private fun LightPreview() {
 	AKMessengerTheme(darkTheme = false) {
-		SignupPage()
+		SignupPage(rememberNavController())
 	}
 }
 
@@ -256,6 +256,6 @@ private fun LightPreview() {
 @Composable
 private fun DarkPreview() {
 	AKMessengerTheme(darkTheme = true) {
-		SignupPage()
+		SignupPage(rememberNavController())
 	}
 }
